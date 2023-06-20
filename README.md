@@ -7,6 +7,6 @@ My current nixos config.
 ```
 cd /etc/nixos
 sudo mv configuration.nix configuration.nix.backup
-sudo wget -O test.nix https://raw.githubusercontent.com/Naman1997/nixos-config/main/configuration.nix
+sudo wget https://raw.githubusercontent.com/Naman1997/nixos-config/main/configuration.nix
 sudo nixos-rebuild switch
 ```
