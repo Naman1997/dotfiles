@@ -52,6 +52,7 @@
     gnome-photos
     gnome-tour
     gnome-text-editor
+    nixos-render-docs
   ]) ++ (with pkgs.gnome; [
     cheese
     gnome-music
