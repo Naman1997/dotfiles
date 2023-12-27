@@ -5,21 +5,25 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
+  # Bootloader
+  boot.loader.grub = {
+    enable = true;
+    device = "/dev/vda";
+    useOSProber = true;
+  };
 
-  networking.hostName = "nixos";
   # networking.wireless.enable = true;
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "NixOS";
+    networkmanager.enable = true;
+  };
 
-  # Set your time zone.
+  # Set your time zone
   time.timeZone = "Asia/Kolkata";
 
-  # Select internationalisation properties.
+  # Select internationalisation properties
   i18n.defaultLocale = "en_IN";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_IN";
@@ -33,7 +37,7 @@
     LC_TIME = "en_IN";
   };
 
-  # Enable the GNOME Desktop Environment.
+  # Enable the GNOME Desktop Environment
   services.xserver = {
     enable = true;  
     displayManager.gdm = {
@@ -78,10 +82,10 @@
   ];
   
 
-  # Enable CUPS to print documents.
+  # Disable CUPS to print documents
   services.printing.enable = false;
 
-  # Enable sound with pipewire.
+  # Enable sound with pipewire
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -92,11 +96,11 @@
     pulse.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with ‘passwd’
   users.users.naman = {
     isNormalUser = true;
     description = "naman";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       firefox
       htop
@@ -128,6 +132,9 @@
     zsh-syntax-highlighting
   ];
 
+  # Docker config
+  virtualisation.docker.enable = true;
+
   # Zsh config
   programs.zsh = {
     enable = true;
@@ -146,13 +153,13 @@
     enableSSHSupport = true;
   };
 
-  # Enable the OpenSSH daemon.
+  # Enable the OpenSSH daemon
   services = {
     openssh.enable = true;
     qemuGuest.enable = true;
   };
 
-  # Open ports in the firewall.
+  # Open ports in the firewall
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   
