@@ -71,8 +71,7 @@
     iagno # go game
     hitori # sudoku game
     atomix # puzzle game
-]);
-
+  ]);
 
   # Configure keymap in X11
   services.xserver = {
@@ -123,16 +122,23 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    };
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    distrobox
+    git
     gnomeExtensions.pop-shell
-    vscode
     neofetch
+    nur.repos.nltch.spotify-adblock
+    vscode
     vim
     wget
-    git
     zsh-autosuggestions
     zsh-history-substring-search
     zsh-syntax-highlighting
@@ -169,6 +175,12 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -176,6 +188,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
 }
