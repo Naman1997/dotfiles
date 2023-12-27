@@ -105,7 +105,6 @@
     packages = with pkgs; [
       firefox
       htop
-      google-chrome
     ];
   };
 
