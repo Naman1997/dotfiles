@@ -1,8 +1,8 @@
-# nixos-config
+# dotfiles
 
-My current nixos config.
+My current nixos dotfiles.
 
-## Build process [Only on NixOS]
+## Build process
 
 ```
 cd /etc/nixos
