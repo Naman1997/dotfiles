@@ -8,5 +8,5 @@ sudo nix-channel --update
 sudo nixos-rebuild switch -I nixos-config=.
 
 if [[ ! -f ~/.zshrc ]]; then
-    echo "neofetch --disable model resolution wm_theme wm theme icons packages uptime de shell term --ascii_distro Nixos_small --color_blocks off" > ~/.zshrc
+    echo "source $ZSH/oh-my-zsh.sh \nneofetch --disable model resolution wm_theme wm theme icons packages uptime de shell term --ascii_distro Nixos_small --color_blocks off" > ~/.zshrc
 fi
