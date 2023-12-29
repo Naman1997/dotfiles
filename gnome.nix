@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   # Enable the GNOME Desktop Environment
+  programs.dconf.enable = true;
   services = {
     xserver = {
       enable = true;

@@ -31,9 +31,6 @@
       neofetch
       nur.repos.nltch.spotify-adblock
       vscode
-      zsh-autosuggestions
-      zsh-history-substring-search
-      zsh-syntax-highlighting
     ];
   };
 
@@ -47,18 +44,9 @@
   # Docker config
   virtualisation.docker.enable = true;
 
-  # Zsh config
-  # FIXME: Use homemanger to fix this
-  programs.zsh = {
-    enable = true;
-    enableGlobalCompInit = false;
-    histSize = 10000;
-    ohMyZsh = {
-      enable = true;
-      plugins = [ "git" "docker" "kubectl" "zsh-autosuggestions" "zsh-history-substring-search" "zsh-syntax-highlighting" ];
-      theme = "jonathan";
-    };
-  };
+  # Default shell
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [ zsh bashInteractive ];
 
   # gnupg config
   programs.gnupg.agent = {
@@ -66,10 +54,23 @@
     enableSSHSupport = true;
   };
 
-  # Enable the OpenSSH daemon
+  # Enable other services
   services = {
     openssh.enable = true;
     qemuGuest.enable = true;
+  };
+
+  # Zsh config
+  programs.zsh = {
+    enable = true;
+    histSize = 10000;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+    ohMyZsh = {
+      enable = true;
+      plugins = [ "git" "docker" "kubectl" ];
+      theme = "jonathan";
+    };
   };
   
   # Nix settings
