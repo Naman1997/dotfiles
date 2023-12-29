@@ -2,12 +2,13 @@
 
 My current nixos dotfiles.
 
-## Build process
+## Installation
+
+This repo uses the hardware config that will be generated in this dir using the `nixos-generate-config --show-hardware-config` command. It will not touch configuration files in `/etc/nixos`.
+
+To install just run:
 
 ```
-cd /etc/nixos
-sudo mv configuration.nix configuration.nix.backup
-sudo wget https://raw.githubusercontent.com/Naman1997/nixos-config/main/configuration.nix
-sudo nixos-rebuild switch --upgrade
-sudo nix-collect-garbage --delete-old # Only if cleanup is needed
+chmod +x upgrade.sh
+./upgrade.sh
 ```
