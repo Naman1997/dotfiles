@@ -48,6 +48,7 @@
   virtualisation.docker.enable = true;
 
   # Zsh config
+  # FIXME: Use homemanger to fix this
   programs.zsh = {
     enable = true;
     enableGlobalCompInit = false;
