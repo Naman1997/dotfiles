@@ -20,9 +20,9 @@
   # Define a user account. Don't forget to set a password with ‘passwd’
   users.users.naman = {
     isNormalUser = true;
-    description = "naman";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
+      feh
       firefox
       gh
       gnomeExtensions.pop-shell

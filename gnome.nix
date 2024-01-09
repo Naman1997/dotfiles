@@ -25,8 +25,6 @@
     gnome-connections
     gnome-text-editor
     gnome-tour
-    loupe
-    snapshot
     gnome.epiphany
     gnome.evince
     gnome.geary
@@ -43,6 +41,8 @@
     gnome.sushi
     gnome.totem
     gnome.yelp
+    loupe
     orca
+    snapshot
   ];
 }
