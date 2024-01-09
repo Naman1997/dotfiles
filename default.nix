@@ -7,6 +7,7 @@
       ./networking.nix
       ./sound.nix
       ./gnome.nix
+      ./vm.nix
     ];
 
   # Allow unfree packages
@@ -20,7 +21,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’
   users.users.naman = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
     packages = with pkgs; [
       feh
       firefox
