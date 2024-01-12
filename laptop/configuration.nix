@@ -44,6 +44,26 @@
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    initialPassword = "nixos";
+  };
+
+  security.sudo = {
+    enable = true;
+    wheelNeedsPassword = true;
+  };
+  security.wrappers = {
+    pmount = {
+      source = "${pkgs.pmount}/bin/pmount";
+      owner = "root";
+      group = "root";
+      setuid = true;
+    };
+    pumount = {
+      source = "${pkgs.pmount}/bin/pumount";
+      owner = "root";
+      group = "root";
+      setuid = true;
+    };
   };
 
   # Allow unfree packages

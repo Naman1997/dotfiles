@@ -20,12 +20,20 @@ chmod +x upgrade.sh
 
 - Clone this repo
 - Change username and hostname in flake.nix
-- Replace your hardware-configuration.nix with the one inside the workstation or laptop folders
+- Create hardware configuration for your system
+```
+nixos-generate-config --show-hardware-config > workstation/hardware-configuration.nix
+# OR
+nixos-generate-config --show-hardware-config > laptop/hardware-configuration.nix
+```
 - Run this command:
 
 ```
 sudo nixos-rebuild switch --flake .#workstation
+# OR
+sudo nixos-rebuild switch --flake .#laptop
 ```
+- Inital password is `nixos` for your user
 
 # Special Thanks
 
