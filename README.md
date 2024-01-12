@@ -14,3 +14,19 @@ cd dotfiles
 chmod +x upgrade.sh
 ./upgrade.sh
 ```
+
+# Steps To Reproduce My System
+
+
+- Clone this repo
+- Change username and hostname in flake.nix
+- Replace your hardware-configuration.nix with the one inside the workstation or laptop folders
+- Run this command:
+
+```
+sudo nixos-rebuild switch --flake .#workstation
+```
+
+# Special Thanks
+
+This repo is esentially a fork of [zaneyos](https://gitlab.com/Zaney/zaneyos) with some of my changes on top.
